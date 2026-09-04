@@ -1,0 +1,146 @@
+version: 2
+
+models:
+
+  - name: fct_sales
+    description: >
+      Atomic retail sales fact table containing sales transactions,
+      quantities, revenue, discounts, cost of goods sold and profit measures.
+
+    columns:
+
+      - name: sales_key
+        description: "Unique surrogate key for each sales transaction."
+
+      - name: product_key
+        description: "Foreign key to the product dimension."
+
+      - name: customer_key
+        description: "Foreign key to the customer dimension."
+
+      - name: store_key
+        description: "Foreign key to the store dimension."
+
+      - name: supplier_key
+        description: >
+          Foreign key to the supplier dimension. References the
+          appropriate historical SCD Type 2 supplier record.
+
+      - name: quantity_sold
+        description: "Number of units sold."
+
+      - name: sales_amount
+        description: >
+          Gross sales value before discounts.
+
+      - name: discount_amount
+        description: >
+          Total discount applied to the transaction.
+
+      - name: net_sales_amount
+        description: >
+          Net sales revenue after discounts.
+
+      - name: cost_amount
+        description: >
+          Cost of goods sold associated with the units sold.
+
+      - name: profit_amount
+        description: >
+          Transaction-level gross profit calculated as net sales
+          revenue minus cost of goods sold.
+
+
+  - name: dim_supplier
+    description: >
+      Supplier/Farmer dimension implemented using Slowly Changing
+      Dimension Type 2.
+
+    columns:
+
+      - name: supplier_key
+        description: >
+          Warehouse surrogate key identifying a specific historical
+          version of a supplier.
+
+      - name: supplier_id
+        description: >
+          Natural/business identifier of the supplier.
+
+      - name: supplier_name
+        description: "Name of the farmer or supplier."
+
+      - name: effective_from
+        description: >
+          Date from which this version of the supplier record is valid.
+
+      - name: effective_to
+        description: >
+          Date until which this version of the supplier record is valid.
+
+      - name: is_current
+        description: >
+          Indicates whether the record represents the current supplier version.
+
+
+  - name: metrics_retail_sales
+    description: >
+      Semantic-layer model containing centrally defined business metrics
+      used by Power BI, Tableau and other analytical consumers.
+
+    meta:
+
+      metrics:
+
+        gross_profit_sales:
+          label: "Gross Profit (Sales View)"
+          type: "sum"
+          expression: "net_sales_amount - cost_amount"
+          description: >
+            Gross profit calculated from operational sales data.
+            Net sales revenue is reduced by the transaction-level
+            cost of goods sold.
+
+        gross_profit_margin_sales:
+          label: "Gross Profit Margin (Sales View)"
+          type: "calculated"
+          expression: >
+            SUM(net_sales_amount - cost_amount)
+            / NULLIF(SUM(net_sales_amount), 0)
+          description: >
+            Sales-view gross profit expressed as a percentage of
+            net sales revenue.
+
+        net_sales:
+          label: "Net Sales"
+          type: "sum"
+          expression: "net_sales_amount"
+          description: >
+            Revenue after customer discounts but before operating expenses.
+
+        cogs:
+          label: "Cost of Goods Sold"
+          type: "sum"
+          expression: "cost_amount"
+          description: >
+            Direct cost attributable to products sold.
+
+        gross_profit_finance:
+          label: "Gross Profit (Finance View)"
+          type: "calculated"
+          expression: >
+            NET_SALES
+            - FINANCE_APPROVED_COGS
+          description: >
+            Finance-approved gross profit using the organization's
+            official accounting definition of cost of goods sold.
+
+        gross_profit_margin_finance:
+          label: "Gross Profit Margin (Finance View)"
+          type: "calculated"
+          expression: >
+            GROSS_PROFIT_FINANCE
+            / NULLIF(NET_SALES, 0)
+          description: >
+            Finance-approved gross profit expressed as a percentage
+            of net sales.
