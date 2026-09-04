@@ -1,0 +1,102 @@
+<mxfile host="app.diagrams.net" modified="2026-09-04T19:00:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+  <diagram id="star-schema" name="Retail Sales & Inventory Star Schema">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- TITLE -->
+        <mxCell id="title" value="RETAIL SALES &amp; INVENTORY MANAGEMENT — STAR SCHEMA" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="450" y="20" width="700" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- DIM DATE -->
+        <mxCell id="dim_date" value="&lt;b&gt;DIM_DATE&lt;/b&gt;&lt;hr&gt;PK Date_Key&lt;br&gt;Full_Date&lt;br&gt;Day&lt;br&gt;Month&lt;br&gt;Month_Name&lt;br&gt;Quarter&lt;br&gt;Year&lt;br&gt;Week&lt;br&gt;Day_Name" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="610" y="90" width="220" height="230" as="geometry"/>
+        </mxCell>
+
+        <!-- DIM PRODUCT -->
+        <mxCell id="dim_product" value="&lt;b&gt;DIM_PRODUCT&lt;/b&gt;&lt;hr&gt;PK Product_Key&lt;br&gt;Product_ID&lt;br&gt;Product_Name&lt;br&gt;Category&lt;br&gt;Sub_Category&lt;br&gt;Brand&lt;br&gt;Unit_of_Measure&lt;br&gt;Standard_Cost&lt;br&gt;Selling_Price&lt;br&gt;Effective_From&lt;br&gt;Effective_To&lt;br&gt;Is_Current" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="370" width="250" height="290" as="geometry"/>
+        </mxCell>
+
+        <!-- DIM CUSTOMER -->
+        <mxCell id="dim_customer" value="&lt;b&gt;DIM_CUSTOMER&lt;/b&gt;&lt;hr&gt;PK Customer_Key&lt;br&gt;Customer_ID&lt;br&gt;Customer_Name&lt;br&gt;Gender&lt;br&gt;Age_Group&lt;br&gt;Location&lt;br&gt;Customer_Segment&lt;br&gt;Registration_Date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="350" y="390" width="220" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- FACT SALES -->
+        <mxCell id="fact_sales" value="&lt;b&gt;FACT_SALES&lt;/b&gt;&lt;hr&gt;PK Sales_Key&lt;br&gt;FK Date_Key&lt;br&gt;FK Product_Key&lt;br&gt;FK Customer_Key&lt;br&gt;FK Store_Key&lt;br&gt;FK Supplier_Key&lt;br&gt;FK Promotion_Key&lt;br&gt;&lt;br&gt;&lt;b&gt;Measures&lt;/b&gt;&lt;br&gt;Quantity_Sold&lt;br&gt;Unit_Price&lt;br&gt;Discount_Amount&lt;br&gt;Sales_Amount&lt;br&gt;Cost_Amount&lt;br&gt;Profit_Amount" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;spacing=8;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="650" y="380" width="300" height="350" as="geometry"/>
+        </mxCell>
+
+        <!-- DIM STORE -->
+        <mxCell id="dim_store" value="&lt;b&gt;DIM_STORE&lt;/b&gt;&lt;hr&gt;PK Store_Key&lt;br&gt;Store_ID&lt;br&gt;Store_Name&lt;br&gt;Branch&lt;br&gt;County&lt;br&gt;Region&lt;br&gt;Store_Type" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="390" width="220" height="190" as="geometry"/>
+        </mxCell>
+
+        <!-- DIM SUPPLIER SCD2 -->
+        <mxCell id="dim_supplier" value="&lt;b&gt;DIM_SUPPLIER — SCD TYPE 2&lt;/b&gt;&lt;hr&gt;PK Supplier_Key&lt;br&gt;Supplier_ID&lt;br&gt;Supplier_Name&lt;br&gt;Location&lt;br&gt;Contact&lt;br&gt;&lt;br&gt;&lt;b&gt;SCD Type 2 Attributes&lt;/b&gt;&lt;br&gt;Effective_From&lt;br&gt;Effective_To&lt;br&gt;Is_Current" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;spacing=8;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="90" width="270" height="250" as="geometry"/>
+        </mxCell>
+
+        <!-- DIM PROMOTION -->
+        <mxCell id="dim_promotion" value="&lt;b&gt;DIM_PROMOTION&lt;/b&gt;&lt;hr&gt;PK Promotion_Key&lt;br&gt;Promotion_ID&lt;br&gt;Promotion_Name&lt;br&gt;Promotion_Type&lt;br&gt;Discount_Percentage&lt;br&gt;Start_Date&lt;br&gt;End_Date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="650" width="240" height="210" as="geometry"/>
+        </mxCell>
+
+        <!-- FACT INVENTORY -->
+        <mxCell id="fact_inventory" value="&lt;b&gt;FACT_INVENTORY&lt;/b&gt;&lt;hr&gt;PK Inventory_Key&lt;br&gt;FK Date_Key&lt;br&gt;FK Product_Key&lt;br&gt;FK Store_Key&lt;br&gt;FK Supplier_Key&lt;br&gt;&lt;br&gt;&lt;b&gt;Measures&lt;/b&gt;&lt;br&gt;Opening_Stock&lt;br&gt;Stock_Received&lt;br&gt;Units_Sold&lt;br&gt;Stock_Adjustment&lt;br&gt;Closing_Stock&lt;br&gt;Inventory_Value" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="360" y="760" width="300" height="270" as="geometry"/>
+        </mxCell>
+
+        <!-- SCD2 NOTE -->
+        <mxCell id="scd_note" value="&lt;b&gt;SCD TYPE 2 LOGIC&lt;/b&gt;&lt;br&gt;When supplier attributes change, close the existing record using Effective_To and Is_Current = 0, then insert a new supplier version with a new Supplier_Key and Is_Current = 1. Historical facts continue referencing the correct historical version." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="20" y="710" width="300" height="190" as="geometry"/>
+        </mxCell>
+
+        <!-- RELATIONSHIPS -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;strokeWidth=2;" edge="1" parent="1" source="dim_date" target="fact_sales">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;strokeWidth=2;" edge="1" parent="1" source="dim_product" target="fact_sales">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;strokeWidth=2;" edge="1" parent="1" source="dim_customer" target="fact_sales">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;strokeWidth=2;" edge="1" parent="1" source="dim_store" target="fact_sales">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;strokeWidth=2;" edge="1" parent="1" source="dim_supplier" target="fact_sales">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;strokeWidth=2;" edge="1" parent="1" source="dim_promotion" target="fact_sales">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;strokeWidth=2;" edge="1" parent="1" source="dim_date" target="fact_inventory">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;strokeWidth=2;" edge="1" parent="1" source="dim_product" target="fact_inventory">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;strokeWidth=2;" edge="1" parent="1" source="dim_store" target="fact_inventory">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;strokeWidth=2;" edge="1" parent="1" source="dim_supplier" target="fact_inventory">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

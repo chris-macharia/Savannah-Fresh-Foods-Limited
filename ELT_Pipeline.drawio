@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" modified="2026-09-04T19:00:00.000Z" agent="Mozilla/5.0" version="24.7.17">
+  <diagram id="elt-pipeline" name="Modern ELT Pipeline Workflow">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- TITLE -->
+        <mxCell id="title" value="MODERN ELT PIPELINE — POS, APP &amp; CRM TO BI" style="text;html=1;strokeColor=none;fillColor=none;fontSize=22;fontStyle=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="450" y="20" width="700" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- SOURCE SYSTEMS -->
+        <mxCell id="pos" value="&lt;b&gt;POS SYSTEM&lt;/b&gt;&lt;hr&gt;Sales Transactions&lt;br&gt;Products Sold&lt;br&gt;Prices&lt;br&gt;Discounts&lt;br&gt;Store Data&lt;br&gt;Inventory Movements" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="70" y="120" width="230" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="app" value="&lt;b&gt;CUSTOMER APP&lt;/b&gt;&lt;hr&gt;Customer Registration&lt;br&gt;Customer Profiles&lt;br&gt;Orders&lt;br&gt;Product Interactions&lt;br&gt;Customer Activity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="380" y="120" width="230" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="crm" value="&lt;b&gt;CRM SYSTEM&lt;/b&gt;&lt;hr&gt;Customer Data&lt;br&gt;Supplier Data&lt;br&gt;Customer Segments&lt;br&gt;Marketing Data&lt;br&gt;Supplier Updates" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="690" y="120" width="230" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- AIRFLOW -->
+        <mxCell id="airflow" value="&lt;b&gt;APACHE AIRFLOW&lt;/b&gt;&lt;hr&gt;&lt;b&gt;ELT DAG / ORCHESTRATION&lt;/b&gt;&lt;br&gt;&lt;br&gt;Schedule&lt;br&gt;Dependencies&lt;br&gt;Retries&lt;br&gt;Monitoring&lt;br&gt;Task Execution" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="120" width="270" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- RAW -->
+        <mxCell id="raw" value="&lt;b&gt;RAW / BRONZE LAYER&lt;/b&gt;&lt;hr&gt;Raw POS Data&lt;br&gt;Raw App Data&lt;br&gt;Raw CRM Data&lt;br&gt;&lt;br&gt;Immutable source copies&lt;br&gt;Schema-on-read" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="180" y="430" width="280" height="200" as="geometry"/>
+        </mxCell>
+
+        <!-- STAGING -->
+        <mxCell id="staging" value="&lt;b&gt;STAGING / SILVER LAYER&lt;/b&gt;&lt;hr&gt;Data Validation&lt;br&gt;Data Cleaning&lt;br&gt;Deduplication&lt;br&gt;Type Conversion&lt;br&gt;Standardisation&lt;br&gt;Null Handling" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="570" y="430" width="280" height="220" as="geometry"/>
+        </mxCell>
+
+        <!-- TRANSFORMATION -->
+        <mxCell id="transform" value="&lt;b&gt;TRANSFORMATION / DATA MODELING&lt;/b&gt;&lt;hr&gt;Business Rules&lt;br&gt;Surrogate Keys&lt;br&gt;Dimension Transformation&lt;br&gt;&lt;b&gt;Supplier SCD Type 2&lt;/b&gt;&lt;br&gt;Fact Table Transformation&lt;br&gt;Referential Integrity" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="960" y="430" width="300" height="230" as="geometry"/>
+        </mxCell>
+
+        <!-- DATA WAREHOUSE -->
+        <mxCell id="warehouse" value="&lt;b&gt;DATA WAREHOUSE / GOLD LAYER&lt;/b&gt;&lt;hr&gt;&lt;b&gt;STAR SCHEMA&lt;/b&gt;&lt;br&gt;&lt;br&gt;FACT_SALES&lt;br&gt;FACT_INVENTORY&lt;br&gt;DIM_DATE&lt;br&gt;DIM_PRODUCT&lt;br&gt;DIM_CUSTOMER&lt;br&gt;DIM_STORE&lt;br&gt;DIM_SUPPLIER&lt;br&gt;DIM_PROMOTION" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="500" y="760" width="320" height="260" as="geometry"/>
+        </mxCell>
+
+        <!-- BI -->
+        <mxCell id="bi" value="&lt;b&gt;BI / ANALYTICS LAYER&lt;/b&gt;&lt;hr&gt;Power BI / Tableau&lt;br&gt;&lt;br&gt;Sales Dashboards&lt;br&gt;Inventory Dashboards&lt;br&gt;Supplier Analysis&lt;br&gt;Customer Analysis&lt;br&gt;Profitability KPIs&lt;br&gt;Decision Support" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="930" y="760" width="300" height="240" as="geometry"/>
+        </mxCell>
+
+        <!-- AIRFLOW DAG TASKS -->
+        <mxCell id="dag" value="&lt;b&gt;EXAMPLE AIRFLOW DAG TASKS&lt;/b&gt;&lt;br&gt;extract_pos → extract_app → extract_crm&lt;br&gt;↓&lt;br&gt;load_raw → validate_data → clean_staging&lt;br&gt;↓&lt;br&gt;update_dimensions → update_supplier_scd2&lt;br&gt;↓&lt;br&gt;load_fact_sales → load_fact_inventory&lt;br&gt;↓&lt;br&gt;quality_checks → refresh_bi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="40" y="700" width="390" height="260" as="geometry"/>
+        </mxCell>
+
+        <!-- EDGES SOURCE TO AIRFLOW -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;" edge="1" parent="1" source="pos" target="airflow">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;" edge="1" parent="1" source="app" target="airflow">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;" edge="1" parent="1" source="crm" target="airflow">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- AIRFLOW TO RAW -->
+        <mxCell id="e4" value="Extract &amp; Load" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;" edge="1" parent="1" source="airflow" target="raw">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- RAW TO STAGING -->
+        <mxCell id="e5" value="Clean &amp; Validate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;" edge="1" parent="1" source="raw" target="staging">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- STAGING TO TRANSFORMATION -->
+        <mxCell id="e6" value="Transform" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;" edge="1" parent="1" source="staging" target="transform">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- TRANSFORMATION TO WAREHOUSE -->
+        <mxCell id="e7" value="Load" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;" edge="1" parent="1" source="transform" target="warehouse">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- WAREHOUSE TO BI -->
+        <mxCell id="e8" value="Analytics / Reporting" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeWidth=2;" edge="1" parent="1" source="warehouse" target="bi">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- AIRFLOW CONTROL CONNECTIONS -->
+        <mxCell id="e9" value="Orchestrates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;strokeWidth=2;" edge="1" parent="1" source="airflow" target="staging">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e10" value="Orchestrates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;strokeWidth=2;" edge="1" parent="1" source="airflow" target="transform">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e11" value="Triggers Refresh" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;endArrow=open;strokeWidth=2;" edge="1" parent="1" source="airflow" target="bi">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
